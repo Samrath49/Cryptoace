@@ -3,6 +3,120 @@
   padding: 0;
 }
 
+@font-face {
+  font-family: "Rajdhani";
+  src: url("../assets/fonts/Rajdhani-Medium.ttf") format("ttf"),
+    url("../assets/fonts/Rajdhani-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Rajdhani-SemiBold";
+  src: url("../assets/fonts/Rajdhani-SemiBold.ttf") format("ttf"),
+    url("../assets/fonts/Rajdhani-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "Rajdhani-Bold";
+  src: url("../assets/fonts/Rajdhani-Bold.ttf") format("ttf"),
+    url("../assets/fonts/Rajdhani-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Rubik-Medium";
+  src: url("../assets/fonts/Rubik-Medium.ttf") format("ttf"),
+    url("../assets/fonts/Rubik-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Rubik-Bold";
+  src: url("../assets/fonts/Rubik-Bold.ttf") format("ttf"),
+    url("../assets/fonts/Rubik-Bold.ttf");
+}
+
+.text-logo-gradient {
+  background-color: #fff;
+  background-image: radial-gradient(
+      at 4% 36%,
+      rgb(87, 44, 206) 0,
+      transparent 53%
+    ),
+    radial-gradient(at 100% 60%, rgb(49, 46, 206) 0, transparent 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 @tailwind base;
+
+@layer base {
+  html {
+    font-family: Rajdhani;
+    scroll-behavior: smooth;
+  }
+}
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .menu {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    padding: 0;
+  }
+  .line {
+    fill: none;
+    stroke: #b9c3ce;
+    stroke-width: 6;
+    transition: stroke-dasharray 700ms cubic-bezier(0.4, 0, 0.2, 1),
+      stroke-dashoffset 700ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .line1 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+  }
+  .line2 {
+    stroke-dasharray: 60 60;
+    stroke-width: 6;
+  }
+  .line3 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+  }
+  .opened .line1 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+  }
+  .opened .line2 {
+    stroke-dasharray: 1 60;
+    stroke-dashoffset: -30;
+    stroke-width: 6;
+  }
+  .opened .line3 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+  }
+
+  .hoverEffect {
+    transition: 0.35s;
+  }
+  .hoverEffect:hover {
+    text-shadow: 0 -1.05px 0 #fff, 0 2px 0 #30132b, 0 4px 0 #2c0d99,
+      0 6px 0 #701781, 0 8px 0 #2a105a, 0 10px 0 #2e0a42;
+    /* text-shadow: 0 -1.05px 0 #fff, 0 2px 0 #30132b, 0 4px 0 #2c0d99,
+      0 6px 0 #4f115c, 0 8px 0 #2a105a, 0 10px 0 #190524; */
+    /* text-shadow: 0 -1.05px 0 #fff, 0 2px 0 #2e2e2e, 0 4px 0 #555555,
+      0 6px 0 #1a2b50, 0 8px 0 #3b275f, 0 10px 0 rgba(57, 7, 83, 0.493); */
+  }
+
+  @-moz-document url-prefix() {
+    menu {
+      padding: 5px;
+      border-radius: 5px;
+      background-color: #2d3436;
+      background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+    }
+  }
+}

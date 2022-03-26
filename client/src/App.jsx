@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
 import { Route, Routes } from "react-router";
-import { Footer, NotFound, Loader } from "./components";
-// import Home from "./pages/Home";
+import { Navbar, Footer, NotFound, Loader } from "./components";
 
 const Home = React.lazy(() => import("./pages/Home"));
 const SendEther = React.lazy(() => import("./pages/SendEther"));
@@ -10,6 +9,7 @@ const BuyToken = React.lazy(() => import("./pages/BuyToken"));
 
 const App = () => (
   <div className="min-h-screen flex flex-col overflow-hidden">
+    <Navbar />
     <Routes>
       <Route
         path="/"

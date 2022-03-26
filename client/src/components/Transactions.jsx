@@ -6,7 +6,11 @@ const TransactionsCard = () => {
 };
 
 const Transactions = () => {
-  return <div className="">Transaction</div>;
+  return (
+    <>
+      <div>Transaction</div>
+    </>
+  );
 };
 
 export default Transactions;
