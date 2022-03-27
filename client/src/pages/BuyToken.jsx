@@ -48,7 +48,7 @@ const BuyToken = () => {
                 onClick={() => {}}
                 className="w-full mt-2 bean disabled:cursor-not-allowed"
               >
-                {true ? "BUY AIBOOST TOKEN" : "⚠️ No Account Found"}
+                {true ? "BUY ACE TOKEN" : "⚠️ No Account Found"}
               </button>
             </form>
           </>
