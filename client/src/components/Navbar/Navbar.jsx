@@ -11,8 +11,8 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const currentAccount = "0x93F1F09c261eea8715649eC57A5D655877BC5256";
-  //   const { currentAccount, connectWallet } = useContext(ContractsContext);
+  // const currentAccount = "0x93F1F09c261eea8715649eC57A5D655877BC5256";
+  const currentAccount = "";
 
   return (
     <div className="bg-[#000000e5]  w-full border-b top-0 border-slate-400/5 z-10 shadow-lg text-2xl">
@@ -71,27 +71,35 @@ const Navbar = () => {
           <ul className="hidden mf:flex items-center space-x-8">
             <li>
               {!currentAccount && (
-                <button
-                  type="button"
-                  onClick={connectWallet}
-                  className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-indigo-400 hover:bg-indigo-700 focus:shadow-outline focus:outline-none"
-                >
-                  <p className="text-white text-base font-semibold">
-                    Connect Wallet
-                  </p>
-                </button>
+                <>
+                  <button
+                    type="button"
+                    // onClick={connectWallet}
+                    className="inline-flex items-center justify-center h-12 px-6 border-2 rounded-full border-[#963DFF] bg-transparent transition-all ease-linear delay-75 group hover:cursor-pointer hover:border-[#712dbe]"
+                  >
+                    <p className="text-[#bbc4cf] font-rajdhaniSemibold transition-all ease-linear delay-75 group-hover:text-slate-200">
+                      Connect Wallet
+                    </p>
+                  </button>
+                </>
               )}
               {currentAccount && (
-                <p className="font-rajdhaniSemibold">
-                  <a
-                    href={`https://ropsten.etherscan.io/address/${currentAccount}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="tracking-wide text-slate-200 hover:cursor-pointer hoverEffect"
+                <>
+                  <button
+                    type="button"
+                    className="inline-flex items-center justify-center h-12 px-6 border-2 rounded-full border-[#963DFF] bg-transparent transition-all ease-linear delay-75 group hover:cursor-pointer hover:border-[#712dbe]"
                   >
-                    {shortenAddress(currentAccount)}
-                  </a>
-                </p>
+                    <p className="text-[#bbc4cf] font-rajdhaniSemibold transition-all ease-linear delay-75 group-hover:text-slate-200">
+                      <a
+                        href={`https://ropsten.etherscan.io/address/${currentAccount}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {shortenAddress(currentAccount)}
+                      </a>
+                    </p>
+                  </button>
+                </>
               )}
             </li>
           </ul>

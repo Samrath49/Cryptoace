@@ -4,8 +4,8 @@ import Logo from "../../assets/images/logo.svg";
 
 const Footer = () => {
   return (
-    <div className="w-full flex md:justify-center justify-between items-center flex-col p-4 border-t bg-[#000000e5]">
-      <div className="w-full flex sm:flex-row animate-fade-in-up  flex-col justify-between items-center my-4">
+    <div className="w-full flex md:justify-center justify-between items-center flex-col border-t border-slate-400/5 drop-shadow-2xl p-4 bg-[#000000e5]">
+      <div className="w-full flex sm:flex-row animate-fade-in-down  flex-col justify-between items-center my-4">
         <div className="flex flex-[0.5] justify-center items-center">
           <Link
             to={"/"}
@@ -57,9 +57,9 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="sm:w-[90%] h-[1px] animate-fade-in-up w-full bg-slate-400/40 mt-5"></div>
+      <div className="sm:w-[90%] h-[1px] animate-fade-in-down w-full bg-slate-400/40 mt-5"></div>
 
-      <div className="sm:w-[90%] w-full flex justify-between animate-fade-in-up items-center mt-3">
+      <div className="sm:w-[90%] w-full flex justify-between animate-fade-in-down items-center mt-3">
         <div className="w-full grid grid-cols-1 py-5 px-10 text-xl lg:grid-cols-3 md:grid-cols-3">
           <p className="text-slate-200 text-center py-2 text-sm lg:text-left lg:text-base md:text-left md:text-base">
             © 2021 - 2022, All rights reserved
@@ -69,7 +69,7 @@ const Footer = () => {
             <a
               target="_blank"
               href="https://twitter.com/chauhansamrath"
-              className="transition ease-in-out delay-120 text-slate-200 hover:-translate-y-1 hover:scale-125 hover:text-purple-400 duration-300"
+              className="transition ease-in-out delay-120 text-slate-200 hover:-translate-y-1 hover:scale-125 hover:text-[#963DFF] duration-300"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="h-5">
                 <path d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z" />
@@ -79,7 +79,7 @@ const Footer = () => {
             <a
               target="_blank"
               href="https://www.linkedin.com/in/samrath49/"
-              className="transition ease-in-out delay-120 text-slate-200 hover:-translate-y-1 hover:scale-125 hover:text-purple-400 duration-300"
+              className="transition ease-in-out delay-120 text-slate-200 hover:-translate-y-1 hover:scale-125 hover:text-[#963DFF] duration-300"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +95,7 @@ const Footer = () => {
             <a
               target="_blank"
               href="https://github.com/samrath49"
-              className="transition ease-in-out delay-120 text-slate-200 hover:-translate-y-1 hover:scale-125 hover:text-purple-400 duration-300"
+              className="transition ease-in-out delay-120 text-slate-200 hover:-translate-y-1 hover:scale-125 hover:text-[#963DFF] duration-300"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

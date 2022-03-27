@@ -68,17 +68,29 @@ const MenuItem = ({ showMenu, active, currentAccount }) => {
           {!currentAccount && (
             <button
               type="button"
-              className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-indigo-400 hover:bg-indigo-700 focus:shadow-outline focus:outline-none"
+              // onClick={connectWallet}
+              className="inline-flex items-center justify-center h-12 px-6 border-2 rounded-full border-[#963DFF] bg-transparent transition-all ease-linear delay-75 group hover:cursor-pointer hover:border-[#712dbe] focus:border-[#712dbe]"
             >
-              <p className="text-white text-base font-semibold">
+              <p className="text-[#bbc4cf] font-rajdhaniSemibold transition-all ease-linear delay-75 group-hover:text-slate-200">
                 Connect Wallet
               </p>
             </button>
           )}
           {currentAccount && (
-            <p className="font-sans text-slate-200">
-              {shortenAddress(currentAccount)}
-            </p>
+            <button
+              type="button"
+              className="inline-flex items-center justify-center h-12 px-6 border-2 rounded-full border-[#963DFF] bg-transparent transition-all ease-linear delay-75 group hover:cursor-pointer hover:border-[#712dbe]"
+            >
+              <p className="text-[#bbc4cf] font-rajdhaniSemibold transition-all ease-linear delay-75 group-hover:text-slate-200">
+                <a
+                  href={`https://ropsten.etherscan.io/address/${currentAccount}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {shortenAddress(currentAccount)}
+                </a>
+              </p>
+            </button>
           )}
         </li>
       </ul>

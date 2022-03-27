@@ -3,18 +3,18 @@ import ReactDOM from "react-dom";
 
 const Notification = ({ props }) => {
   const [view, setView] = useState(true);
-  console.log("Notification✅", props);
+  // console.log("Notification✅", props);
 
   const close = () => {
     setView(false);
   };
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     close();
-  //   }, 5000);
-  //   return () => clearTimeout(timer);
-  // }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      close();
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const notificationToast = (type, message) => {
     if (type === 1 && view) {
@@ -84,7 +84,9 @@ const Notification = ({ props }) => {
   return ReactDOM.createPortal(
     <>
       {view && (
-        <section className="absolute right-10 top-28 animate-fade-in-up antialiased">
+        <section
+          className={`absolute right-10 top-28 animate-fade-in-up antialiased`}
+        >
           <div
             id="toast-notification"
             className="relative flex items-center w-full max-w-xs p-5

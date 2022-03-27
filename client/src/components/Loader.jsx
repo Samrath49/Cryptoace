@@ -1,14 +1,20 @@
 const Loader = ({ full }) => {
   if (full) {
     return (
-      <div className="bg-slate-900 flex-1 items-center py-4 flex justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-teal-500" />
-      </div>
+      <>
+        <div className="flex-1 bg-[#000000e5] items-center py-4 flex justify-center">
+          <div className="triple-spinner"></div>
+        </div>
+      </>
     );
   }
   return (
-    <div className="flex justify-center items-center py-3">
-      <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-teal-500" />
+    <div class="bg-[#000000e5]">
+      <div className="flex-1 items-center py-4 space-x-2 flex justify-center animate-bounce">
+        <div class="w-6 h-6 bg-[#7b3ec8] rounded-full"></div>
+        <div class="w-6 h-6 bg-[#7680e3] rounded-full"></div>
+        <div class="w-6 h-6 bg-[#a894d0] rounded-full"></div>
+      </div>
     </div>
   );
 };
