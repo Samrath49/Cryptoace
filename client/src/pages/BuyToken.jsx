@@ -5,6 +5,7 @@ const error = true;
 
 const BuyToken = () => {
   const inputRef = useRef();
+
   return (
     <section className="flex-1 p-4 space-y-10 bg-[#000000e5]">
       {/* first div */}
@@ -27,7 +28,7 @@ const BuyToken = () => {
       <div className="container mx-auto bg-neutral-900 p-4 my-4 shadow-lg border border-slate-700 rounded-lg max-w-lg text-slate-300">
         {true && true ? (
           <>
-            <h2 className="text-xl antialiased font-medium">Ace Token (AiB)</h2>
+            <h2 className="text-xl antialiased font-medium">Ace Token</h2>
             <form>
               <span className="text-xs text-teal-500 antialiased tracking-widest font-normal">
                 Please be patient as it can take a while.

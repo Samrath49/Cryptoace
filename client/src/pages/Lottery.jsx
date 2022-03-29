@@ -3,7 +3,6 @@ import Notification from "../components/Notification";
 
 const Lottery = () => {
   const inputRef = useRef();
-
   return (
     <>
       <section className="flex-1 p-4 space-y-10 bg-[#000000e5]">
@@ -28,7 +27,7 @@ const Lottery = () => {
           {true && true ? (
             <>
               <h2 className="text-xl antialiased font-medium">
-                Ace Token (AiB)
+                Ace Token (ACE)
               </h2>
               <form>
                 <span className="text-xs text-teal-500 antialiased tracking-widest font-normal">

@@ -1,18 +1,18 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { shortenAddress } from "../../utils/shortenAddress";
+import { ContractsContext } from "../../context/ContractsContext";
 import Logo from "../../../assets/images/logo.svg";
 import MenuItem from "./MenuItem";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const { currentAccount, connectWallet } = useContext(ContractsContext);
+
   const showMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
-  // const currentAccount = "0x93F1F09c261eea8715649eC57A5D655877BC5256";
-  const currentAccount = "";
 
   return (
     <div className="bg-[#000000e5]  w-full border-b top-0 border-slate-400/5 z-10 shadow-lg text-2xl">
@@ -74,7 +74,7 @@ const Navbar = () => {
                 <>
                   <button
                     type="button"
-                    // onClick={connectWallet}
+                    onClick={connectWallet}
                     className="inline-flex items-center justify-center h-12 px-6 border-2 rounded-full border-[#963DFF] bg-transparent transition-all ease-linear delay-75 group hover:cursor-pointer hover:border-[#712dbe]"
                   >
                     <p className="text-[#bbc4cf] font-rajdhaniSemibold transition-all ease-linear delay-75 group-hover:text-slate-200">
@@ -89,7 +89,7 @@ const Navbar = () => {
                     type="button"
                     className="inline-flex items-center justify-center h-12 px-6 border-2 rounded-full border-[#963DFF] bg-transparent transition-all ease-linear delay-75 group hover:cursor-pointer hover:border-[#712dbe]"
                   >
-                    <p className="text-[#bbc4cf] font-rajdhaniSemibold transition-all ease-linear delay-75 group-hover:text-slate-200">
+                    <p className="text-[#bbc4cf] font-rajdhaniSemibold uppercase transition-all ease-linear delay-75 group-hover:text-slate-200">
                       <a
                         href={`https://ropsten.etherscan.io/address/${currentAccount}`}
                         target="_blank"
