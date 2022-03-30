@@ -5,6 +5,24 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        buytoken: "url('./assets/images/buytoken.svg')",
+      },
+      boxShadow: {
+        "3xl": "0 35px 60px -15px rgba(0, 0, 0, 0.3)",
+      },
+      colors: {
+        // Theme Colors
+        mainBg: "#000000e5",
+        btnBorder: "#963DFF",
+        btnHover: "#712dbe",
+        btnText: "#bbc4cf",
+
+        // Card specific colors
+        slateBg: "#202231",
+        textBg: "#bfbfbf",
+        borderBg: "#3a4361",
+      },
       fontFamily: {
         rajdhani: ["Rajdhani", "sans-serif"],
         rajdhaniSemibold: ["Rajdhani-SemiBold", "sans-serif"],

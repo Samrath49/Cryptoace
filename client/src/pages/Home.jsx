@@ -3,7 +3,7 @@ import { Welcome, MakeSure, Services, Transactions } from "../components";
 
 const Home = () => {
   return (
-    <div>
+    <div className="">
       <Welcome />
       <MakeSure />
       <Services />

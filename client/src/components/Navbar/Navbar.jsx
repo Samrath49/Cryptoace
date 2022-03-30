@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#000000e5]  w-full border-b top-0 border-slate-400/5 z-10 shadow-lg text-2xl">
+    <div className="bg-mainBg  w-full border-b top-0 border-slate-400/5 z-10 shadow-lg text-2xl">
       <div className="px-4 py-5 mx-auto animate-fade-in-up sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="relative flex items-center justify-between">
           <Link
@@ -75,7 +75,7 @@ const Navbar = () => {
                   <button
                     type="button"
                     onClick={connectWallet}
-                    className="inline-flex items-center justify-center h-12 px-6 border-2 rounded-full border-[#963DFF] bg-transparent transition-all ease-linear delay-75 group hover:cursor-pointer hover:border-[#712dbe]"
+                    className="inline-flex items-center justify-center h-12 px-6 border-2 rounded-full border-btnBorder bg-transparent transition-all ease-linear delay-75 group hover:cursor-pointer hover:border-btnHover"
                   >
                     <p className="text-[#bbc4cf] font-rajdhaniSemibold transition-all ease-linear delay-75 group-hover:text-slate-200">
                       Connect Wallet
@@ -85,20 +85,20 @@ const Navbar = () => {
               )}
               {currentAccount && (
                 <>
-                  <button
-                    type="button"
-                    className="inline-flex items-center justify-center h-12 px-6 border-2 rounded-full border-[#963DFF] bg-transparent transition-all ease-linear delay-75 group hover:cursor-pointer hover:border-[#712dbe]"
+                  <a
+                    href={`https://ropsten.etherscan.io/address/${currentAccount}`}
+                    target="_blank"
+                    rel="noreferrer"
                   >
-                    <p className="text-[#bbc4cf] font-rajdhaniSemibold uppercase transition-all ease-linear delay-75 group-hover:text-slate-200">
-                      <a
-                        href={`https://ropsten.etherscan.io/address/${currentAccount}`}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
+                    <button
+                      type="button"
+                      className="inline-flex items-center justify-center h-12 px-6 border-2 rounded-full border-btnBorder bg-transparent transition-all ease-linear delay-75 group hover:cursor-pointer hover:border-btnHover"
+                    >
+                      <p className="text-btnText font-rajdhaniSemibold uppercase transition-all ease-linear delay-75 group-hover:text-slate-200">
                         {shortenAddress(currentAccount)}
-                      </a>
-                    </p>
-                  </button>
+                      </p>
+                    </button>
+                  </a>
                 </>
               )}
             </li>

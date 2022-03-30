@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  /* background-color: #0000005d; */
 }
 
 @font-face {
@@ -107,10 +108,6 @@
   .hoverEffect:hover {
     text-shadow: 0 -1.05px 0 #fff, 0 2px 0 #30132b, 0 4px 0 #2c0d99,
       0 6px 0 #701781, 0 8px 0 #2a105a, 0 10px 0 #2e0a42;
-    /* text-shadow: 0 -1.05px 0 #fff, 0 2px 0 #30132b, 0 4px 0 #2c0d99,
-      0 6px 0 #4f115c, 0 8px 0 #2a105a, 0 10px 0 #190524; */
-    /* text-shadow: 0 -1.05px 0 #fff, 0 2px 0 #2e2e2e, 0 4px 0 #555555,
-      0 6px 0 #1a2b50, 0 8px 0 #3b275f, 0 10px 0 rgba(57, 7, 83, 0.493); */
   }
 
   /* Loader */
