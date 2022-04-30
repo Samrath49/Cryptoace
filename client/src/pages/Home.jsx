@@ -1,11 +1,10 @@
-import React from "react";
-import { Welcome, MakeSure, Services, Transactions } from "../components";
+import { Welcome, GetStarted, Services, Transactions } from "../components";
 
 const Home = () => {
   return (
     <div className="">
       <Welcome />
-      <MakeSure />
+      <GetStarted />
       <Services />
       <Transactions />
     </div>

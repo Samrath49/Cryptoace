@@ -7,13 +7,17 @@ module.exports = {
     extend: {
       backgroundImage: {
         buytoken: "url('./assets/images/buytoken.svg')",
+        lottery: "url('./assets/images/lottery.svg')",
+        sendEther: "url('./assets/images/sendEther.svg')",
+        eth: "url('./assets/images/eth.svg')",
+        tri: "url('./assets/images/tri.svg')",
       },
       boxShadow: {
         "3xl": "0 35px 60px -15px rgba(0, 0, 0, 0.3)",
       },
       colors: {
         // Theme Colors
-        mainBg: "#000000e5",
+        mainBg: "#1A1A1A",
         btnBorder: "#963DFF",
         btnHover: "#712dbe",
         btnText: "#bbc4cf",
@@ -24,24 +28,35 @@ module.exports = {
         borderBg: "#3a4361",
       },
       fontFamily: {
-        rajdhani: ["Rajdhani", "sans-serif"],
-        rajdhaniSemibold: ["Rajdhani-SemiBold", "sans-serif"],
-        rajdhaniBold: ["Rajdhani-Bold", "sans-serif"],
-        rubik: ["Rubik-Medium"],
-        rubikBold: ["Rubik-Bold"],
+        raj: ["Rajdhani", "sans-serif"],
+        rubik: ["Rubik"],
       },
       screens: {
         mf: "990px",
       },
       keyframes: {
-        "slide-in": {
+        "logo-in": {
           "0%": {
-            "-webkit-transform": "translateX(120%)",
-            transform: "translateX(120%)",
+            "-webkit-transform": "translateX(-30%)",
+            transform: "translateX(-30%)",
           },
           "100%": {
             "-webkit-transform": "translateX(0%)",
             transform: "translateX(0%)",
+          },
+        },
+        blob: {
+          "0%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
+          "33%": {
+            transform: "translate(30px, -50px) scale(1.1)",
+          },
+          "66%": {
+            transform: "translate(-20px, 20px) scale(0.9)",
+          },
+          "100%": {
+            transform: "tranlate(0px, 0px) scale(1)",
           },
         },
         wiggle: {
@@ -94,15 +109,13 @@ module.exports = {
         },
       },
       animation: {
-        "slide-in": "slide-in 0.5s ease-out",
+        "logo-in": "logo-in 0.5s ease-out",
+        blob: "blob 7s infinite",
         wiggle: "wiggle 1s ease-in-out infinite",
         "fade-in-down": "fade-in-down 0.5s ease-out",
         "fade-out-down": "fade-out-down 0.5s ease-out",
         "fade-in-up": "fade-in-up 0.5s ease-out",
         "fade-out-up": "fade-out-up 0.5s ease-out",
-      },
-      background: {
-        primary: "#00000",
       },
     },
   },

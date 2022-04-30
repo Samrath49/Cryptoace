@@ -69,9 +69,9 @@ const MenuItem = ({ showMenu, active, currentAccount }) => {
             <button
               type="button"
               // onClick={connectWallet}
-              className="inline-flex items-center justify-center h-12 px-6 border-2 rounded-full border-[#963DFF] bg-transparent transition-all ease-linear delay-75 group hover:cursor-pointer hover:border-[#712dbe] focus:border-[#712dbe]"
+              className="inline-flex items-center justify-center h-12 px-6 border-2 rounded-full border-btnBorder bg-transparent transition-all ease-linear delay-75 group hover:cursor-pointer hover:border-btnHover focus:border-btnHover"
             >
-              <p className="text-[#bbc4cf] font-rajdhaniSemibold transition-all ease-linear delay-75 group-hover:text-slate-200">
+              <p className="text-btnText font-raj font-semibold transition-all ease-linear delay-75 group-hover:text-slate-200">
                 Connect Wallet
               </p>
             </button>
@@ -79,9 +79,9 @@ const MenuItem = ({ showMenu, active, currentAccount }) => {
           {currentAccount && (
             <button
               type="button"
-              className="inline-flex items-center uppercase justify-center h-12 px-6 border-2 rounded-full border-[#963DFF] bg-transparent transition-all ease-linear delay-75 group hover:cursor-pointer hover:border-[#712dbe]"
+              className="inline-flex items-center uppercase justify-center h-12 px-6 border-2 rounded-full border-btnBorder bg-transparent transition-all ease-linear delay-75 group hover:cursor-pointer hover:border-btnHover"
             >
-              <p className="text-[#bbc4cf] font-rajdhaniSemibold transition-all ease-linear delay-75 group-hover:text-slate-200">
+              <p className="text-btnText font-raj font-semibold transition-all ease-linear delay-75 group-hover:text-slate-200">
                 <a
                   href={`https://ropsten.etherscan.io/address/${currentAccount}`}
                   target="_blank"

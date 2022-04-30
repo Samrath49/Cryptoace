@@ -1,37 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Rubik:wght@600;700;800&display=swap");
+
 * {
   margin: 0;
   padding: 0;
-  /* background-color: #0000005d; */
 }
 
-@font-face {
-  font-family: "Rajdhani";
-  src: url("../assets/fonts/Rajdhani-Medium.ttf") format("ttf"),
-    url("../assets/fonts/Rajdhani-Medium.ttf");
+.secure-shadow{
+  filter: drop-shadow(1px 1px 7px #963dff);
 }
 
-@font-face {
-  font-family: "Rajdhani-SemiBold";
-  src: url("../assets/fonts/Rajdhani-SemiBold.ttf") format("ttf"),
-    url("../assets/fonts/Rajdhani-SemiBold.ttf");
-}
-
-@font-face {
-  font-family: "Rajdhani-Bold";
-  src: url("../assets/fonts/Rajdhani-Bold.ttf") format("ttf"),
-    url("../assets/fonts/Rajdhani-Bold.ttf");
-}
-
-@font-face {
-  font-family: "Rubik-Medium";
-  src: url("../assets/fonts/Rubik-Medium.ttf") format("ttf"),
-    url("../assets/fonts/Rubik-Medium.ttf");
-}
-
-@font-face {
-  font-family: "Rubik-Bold";
-  src: url("../assets/fonts/Rubik-Bold.ttf") format("ttf"),
-    url("../assets/fonts/Rubik-Bold.ttf");
+.transaction-shadow{
+  filter: drop-shadow(1px 1px 2px #491e7e);
 }
 
 .text-logo-gradient {
@@ -46,6 +25,22 @@
   -webkit-text-fill-color: transparent;
 }
 
+.gradient-bg-services {
+  background-color: #231b41;
+  background-image: radial-gradient(at 0% 100%, rgb(0, 0, 0) 0, transparent 50%),
+    radial-gradient(at 50% 0%, hsl(256, 39%, 25%) 0, transparent 50%);
+}
+
+.gradient-bg-ball {
+  background-color: #a4508b;
+  background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+}
+
+.gradient-bg-ball1 {
+  background-color: #1e1d1b;
+  background-image: linear-gradient(315deg, #1e1d1b 0%, #cc9934 74%);
+}
+
 @tailwind base;
 
 @layer base {
@@ -53,11 +48,23 @@
     font-family: Rajdhani;
     scroll-behavior: smooth;
   }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
 @tailwind components;
 @tailwind utilities;
 
 @layer utilities {
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
   /* Menu */
   .menu {
     background-color: transparent;
@@ -179,5 +186,34 @@
       background-color: #2d3436;
       background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
     }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 14px;
+  height: 100vh;
+  background-color: #171717;
+  margin-block: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  margin-block: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 3px solid rgba(255, 255, 255, 0);
+  border-radius: 99999px;
+  background-clip: padding-box;
+  background-color: #963dff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #772ace;
+}
+
+@supports (scrollbar-color: #772ace #000000e5) {
+  * {
+    scrollbar-color: #772ace #000000e5;
+    scroll-behavior: smooth;
   }
 }

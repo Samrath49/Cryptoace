@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-mainBg  w-full border-b top-0 border-slate-400/5 z-10 shadow-lg text-2xl">
+    <div className="bg-mainBg  w-full border-b top-0 border-slate-400/5 z-20 shadow-lg text-2xl">
       <div className="px-4 py-5 mx-auto animate-fade-in-up sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="relative flex items-center justify-between">
           <Link
@@ -24,8 +24,8 @@ const Navbar = () => {
             title="Company"
             className="inline-flex items-center"
           >
-            <img src={Logo} alt="" />
-            <span className="text-3xl font-rajdhaniSemibold tracking-wider text-white">
+            <img src={Logo} alt="CryptoAce" />
+            <span className="text-3xl font-raj font-semibold tracking-wider text-white">
               Crypto
               <span className="text-logo-gradient">ace</span>
             </span>
@@ -33,7 +33,7 @@ const Navbar = () => {
 
           {/* Navigation Buttons */}
 
-          <ul className="hidden mf:flex items-center text-slate-300 uppercase space-x-8">
+          <ul className="hidden mf:flex font-medium items-center text-slate-300 uppercase space-x-8">
             <li>
               <Link
                 to={"/buy-token"}
@@ -75,12 +75,17 @@ const Navbar = () => {
                   <button
                     type="button"
                     onClick={connectWallet}
-                    className="inline-flex items-center justify-center h-12 px-6 border-2 rounded-full border-btnBorder bg-transparent transition-all ease-linear delay-75 group hover:cursor-pointer hover:border-btnHover"
+                    className="inline-flex items-center justify-center h-12 px-6 border-2 text-btnText font-semibold rounded-full border-btnBorder bg-transparent transition-all ease-linear delay-75 group hover:cursor-pointer hover:text-slate-200 hover:border-btnHover"
                   >
-                    <p className="text-[#bbc4cf] font-rajdhaniSemibold transition-all ease-linear delay-75 group-hover:text-slate-200">
-                      Connect Wallet
-                    </p>
+                    Connect Wallet
                   </button>
+                  {/* <button type="button" onClick={connectWallet}>
+                    <a class="group relative inline-flex items-center justify-center overflow-hidden rounded-full p-4 px-5 py-2 font-medium text-btnText shadow-xl transition duration-300 ease-out">
+                      <span class="absolute inset-0 h-full w-full bg-gradient-to-br from-btnBorder via-neutral-800 to-btnBorder"></span>
+                      <span class="ease absolute bottom-0 right-0 mb-32 mr-4 block h-64 w-64 origin-bottom-left translate-x-20 rotate-45 transform rounded-full bg-btnHover opacity-30 transition duration-500 group-hover:rotate-90"></span>
+                      <span class="relative text-white">Connect Wallet</span>
+                    </a>
+                  </button> */}
                 </>
               )}
               {currentAccount && (
@@ -94,7 +99,7 @@ const Navbar = () => {
                       type="button"
                       className="inline-flex items-center justify-center h-12 px-6 border-2 rounded-full border-btnBorder bg-transparent transition-all ease-linear delay-75 group hover:cursor-pointer hover:border-btnHover"
                     >
-                      <p className="text-btnText font-rajdhaniSemibold uppercase transition-all ease-linear delay-75 group-hover:text-slate-200">
+                      <p className="text-btnText font-raj font-semibold uppercase transition-all ease-linear delay-75 group-hover:text-slate-200">
                         {shortenAddress(currentAccount)}
                       </p>
                     </button>

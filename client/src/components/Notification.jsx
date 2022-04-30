@@ -3,18 +3,19 @@ import ReactDOM from "react-dom";
 
 const Notification = ({ props }) => {
   const [view, setView] = useState(true);
-  // console.log("Notification✅", props);
 
   const close = () => {
     setView(false);
   };
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      close();
-    }, 5000);
-    return () => clearTimeout(timer);
-  }, []);
+  if (props.timerValue) {
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        close();
+      }, props.timerValue);
+      return () => clearTimeout(timer);
+    }, []);
+  }
 
   const notificationToast = (type, message) => {
     if (type === 1 && view) {
@@ -89,13 +90,19 @@ const Notification = ({ props }) => {
         >
           <div
             id="toast-notification"
-            className="relative flex items-center w-full max-w-xs p-5
-              backdrop-blur-sm bg-gradient-to-br from-black via-slate-800/80 to-transparent
-              text-slate-300 border-[1px] border-[#000000c7] rounded-lg shadow-x"
+            className={`relative flex items-center w-full max-w-xs p-5
+              backdrop-blur-sm bg-gradient-to-br ${
+                props.type === 3
+                  ? "from-red-900/60"
+                  : props.type === 2
+                  ? "from-yellow-800/70"
+                  : "from-green-900/90"
+              }   via-slate-800/80 to-transparent
+              text-slate-300 rounded-lg shadow-x`}
             role="alert"
           >
             {notificationToast(props.type)}
-            <div className="text-sm font-normal antialiased tracking-wide p-2">
+            <div className="font-medium antialiased tracking-wide p-2">
               {props.message}
             </div>
             <button

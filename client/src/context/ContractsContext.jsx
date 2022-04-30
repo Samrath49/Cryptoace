@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer, useState } from "react";
-import { ethers } from "ethers";
+import { ethers, utils } from "ethers";
+import { shortenAddress } from "../utils/shortenAddress.js";
 
 // import enums
 import { contractEnum, web3Enum, tokenEnum, userEnum } from "./enums.js";
@@ -17,8 +18,8 @@ import {
   transactionContractABI,
   tokenSaleContractAddress,
   tokenSaleContractABI,
-  aceTokenContractAddress,
-  aceTokenContractABI,
+  aiboostTokenContractAddress,
+  aiboostTokenContractABI,
   lotteryPoolContractABI,
   lotteryPoolContractAddress,
   lotteryContractABI,
@@ -29,19 +30,24 @@ export const ContractsContext = React.createContext();
 export const ContractsProvider = ({ children }) => {
   const { ethereum } = window;
   const [isLoading, setIsLoading] = useState(false);
-  const [inTransaction, setInTransaction] = useState(false);
   const [isEther, setIsEther] = useState(false);
+  const [isBuyingToken, setIsBuyingToken] = useState(false);
+  const [tokenMessage, setTokenMessage] = useState(null);
+  const [sendingEther, setSendingEther] = useState(false);
+  const [etherMessage, setEtherMessage] = useState(null);
+  const [isCreatingLottery, setIsCreatingLottery] = useState(false);
+  const [createLotteryMessage, setCreateLotteryMessage] = useState(false);
 
   const [contracts, dispatchContracts] = useReducer(contractReducer, {
     transactionContract: null,
-    aceTokenContract: null,
-    aceTokenSaleContract: null,
+    aiboostTokenContract: null,
+    aiboostTokenSaleContract: null,
     transactions: [],
     transactionCount: +localStorage.getItem("transactionCount"),
     tokenPrice: 0,
     lotteryContract: null,
     lotteryPoolContract: null,
-    lotteryManager: "․․․․‥",
+    lotteryManager: "",
     lotteryEntryFee: 0,
     lotteriesDetails: [],
     lotteryTimeRemaining: 0,
@@ -99,9 +105,9 @@ export const ContractsProvider = ({ children }) => {
       signer
     );
 
-    const aceTokenContract = new ethers.Contract(
-      aceTokenContractAddress,
-      aceTokenContractABI,
+    const aiboostTokenContract = new ethers.Contract(
+      aiboostTokenContractAddress,
+      aiboostTokenContractABI,
       signer
     );
 
@@ -118,7 +124,7 @@ export const ContractsProvider = ({ children }) => {
 
     dispatchContracts({
       type: contractEnum.TOKEN_CONTRACT_INIT,
-      value: aceTokenContract,
+      value: aiboostTokenContract,
     });
 
     dispatchContracts({
@@ -132,7 +138,7 @@ export const ContractsProvider = ({ children }) => {
     });
 
     return {
-      aceTokenContract,
+      aiboostTokenContract,
       tokenSaleContract,
       transactionsContract,
       lotteryPoolContract,
@@ -153,13 +159,13 @@ export const ContractsProvider = ({ children }) => {
     try {
       if (
         ethereum &&
-        contracts.aceTokenSaleContract &&
-        contracts.aceTokenContract
+        contracts.aiboostTokenSaleContract &&
+        contracts.aiboostTokenContract
       ) {
         setIsLoading(true);
-        let tokenPrice = await contracts.aceTokenSaleContract.tokenPrice();
-        let tokenSold = await contracts.aceTokenSaleContract.tokenSold();
-        let userBalance = await contracts.aceTokenContract.balanceOf(
+        let tokenPrice = await contracts.aiboostTokenSaleContract.tokenPrice();
+        let tokenSold = await contracts.aiboostTokenSaleContract.tokenSold();
+        let userBalance = await contracts.aiboostTokenContract.balanceOf(
           user.currentAccount
         );
 
@@ -172,6 +178,7 @@ export const ContractsProvider = ({ children }) => {
         dispatchToken({ type: tokenEnum.PRICE, value: tokenPrice });
         dispatchToken({ type: tokenEnum.SOLD, value: tokenSold.toNumber() });
         setIsLoading(false);
+        setTokenMessage(null);
       } else {
         console.log("contract is not initialized @initToken");
       }
@@ -188,26 +195,22 @@ export const ContractsProvider = ({ children }) => {
       const value = ethers.BigNumber.from(
         ethers.utils.parseEther(token.price).toString()
       ).mul(tokens);
-      const transactionHash = await contracts.aceTokenSaleContract.buyTokens(
-        tokens,
-        {
+      const transactionHash =
+        await contracts.aiboostTokenSaleContract.buyTokens(tokens, {
           from: user.currentAccount,
           value: value,
           gasLimit: 500000,
-        }
-      );
-      setInTransaction(true);
+        });
+      setIsBuyingToken(true);
       console.log(`Loading - ${transactionHash.hash}`);
       await transactionHash.wait();
       console.log(`Success - ${transactionHash.hash}`);
-      if (
-        !alert(
-          `Transaction Confirmed ${transactionHash.hash} \n from: ${user.currentAccount}`
-        )
-      ) {
-        location.reload();
-      }
-      setInTransaction(false);
+      setTokenMessage(
+        `Token buy was successful from account ${shortenAddress(
+          user.currentAccount
+        )}.`
+      );
+      setIsBuyingToken(false);
     }
   };
 
@@ -243,10 +246,9 @@ export const ContractsProvider = ({ children }) => {
   };
 
   const checkIfWalletIsConnect = async () => {
-    // TODO: Notification for installing metamask will be an error
     try {
       if (!ethereum) {
-        console.log("⚓No ether found⚓");
+        console.log("No ether found");
       } else {
         setIsEther(true);
       }
@@ -329,18 +331,18 @@ export const ContractsProvider = ({ children }) => {
           );
 
         setIsLoading(true);
+        setSendingEther(true);
         console.log(`Loading - ${transactionHash.hash}`);
         await transactionHash.wait();
         console.log(`Success - ${transactionHash.hash}`);
-        if (
-          !alert(
-            `Transaction Confirmed ${transactionHash.hash} \n from: ${user.currentAccount} \t to: ${addressTo}`
-          )
-        ) {
-          location.reload();
-        }
+        setEtherMessage(
+          `Sending ethereum was successful from ${shortenAddress(
+            user.currentAccount
+          )} to ${shortenAddress(addressTo)}.`
+        );
 
         setIsLoading(false);
+        setSendingEther(false);
         getBalanceOf();
 
         const transactionsCount =
@@ -404,7 +406,7 @@ export const ContractsProvider = ({ children }) => {
 
         const lotteryPrice = await lotteryContract.winningPrice();
         const status = await lotteryContract.status();
-        console.log(status);
+        console.log("Lottery Status", status);
         const manager = await lotteryContract.manager();
         const winner = await lotteryContract.getWinner();
         const players = await lotteryContract.getPlayers();
@@ -476,22 +478,22 @@ export const ContractsProvider = ({ children }) => {
         console.error(`Cannot Start Lottery with ${startTime} time`);
       } else {
         if (ethereum && contracts.lotteryPoolContract) {
-          setIsLoading(true);
           const start = await contracts.lotteryPoolContract.createLottery(
             startTime
           );
+          setIsLoading(true);
+          setIsCreatingLottery(true);
           console.log(`Loading - ${start.hash}`);
           await start.wait();
           console.log(`Success - ${start.hash}`);
-          if (
-            !alert(
-              `Transaction Confirmed ${start.hash} \n from: ${user.currentAccount}`
-            )
-          ) {
-            location.reload();
-          }
+          setCreateLotteryMessage(
+            `Lottery Created Successful by ${shortenAddress(
+              user.currentAccount
+            )}.`
+          );
           // dispatchContracts({ type: contractEnum.LOTTERY_START, value: start });
           setIsLoading(false);
+          setIsCreatingLottery(false);
         } else {
           console.log("The lottery has not started yet");
         }
@@ -575,26 +577,27 @@ export const ContractsProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    async function init() {
-      // TODO: ERROR HERE
-      await checkIfWalletIsConnect();
-      await createEthereumContract();
-      await checkIfTransactionsExists();
-      await initLotteryPool();
+  if (ethereum) {
+    useEffect(() => {
+      async function init() {
+        await checkIfWalletIsConnect();
+        await createEthereumContract();
+        await checkIfTransactionsExists();
+        await initLotteryPool();
 
-      window.ethereum.on("chainChanged", async () => {
-        console.log("network changed!!");
-        window.location.reload();
-      });
+        window.ethereum.on("chainChanged", async () => {
+          console.log("network changed!!");
+          window.location.reload();
+        });
 
-      window.ethereum.on("accountsChanged", async () => {
-        console.log("accounts changed");
-        window.location.reload();
-      });
-    }
-    init();
-  }, []);
+        window.ethereum.on("accountsChanged", async () => {
+          console.log("accounts changed");
+          window.location.reload();
+        });
+      }
+      init();
+    }, []);
+  }
 
   return (
     <ContractsContext.Provider
@@ -616,6 +619,8 @@ export const ContractsProvider = ({ children }) => {
 
         connectWallet,
         sendTransaction,
+        etherMessage,
+        sendingEther,
         isEther,
         isLoading,
         handleChange,
@@ -625,6 +630,7 @@ export const ContractsProvider = ({ children }) => {
         createEthereumContract,
         token,
         initToken,
+        tokenMessage,
         buyTokens,
 
         // lottery
@@ -635,8 +641,10 @@ export const ContractsProvider = ({ children }) => {
         endLottery,
         lotteryTimeRemaining,
         getLotteryDetails,
+        createLotteryMessage,
+        isCreatingLottery,
 
-        inTransaction,
+        isBuyingToken,
       }}
     >
       {children}
