@@ -30,6 +30,34 @@
 - Ethers
 - Chai
 
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+Follow these steps to setup this project locally.
+
+### Installation
+
+_Below are the instructions to setup this project and get started with._
+
+1. Clone the `repo`
+   ```sh
+   git clone https://github.com/Samrath49/Cryptoace.git
+   ```
+2. Install `NPM` packages for both folders using command
+   ```sh
+   npm install
+   ```
+3. Run the application after creating artifacts in client's folder using
+   ```sh
+   npm run dev
+   ```
+   This will run the application at `http://localhost:3000/`
+   
+4. Get a free API Key at [https://example.com](https://example.com)
+   ```js
+   const API_KEY = 'ENTER YOUR API';
+   ```
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
