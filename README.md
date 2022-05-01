@@ -48,15 +48,27 @@ _Below are the instructions to setup this project and get started with._
    ```sh
    npm install
    ```
-3. Run the application after creating artifacts in client's folder using
+3. Generate an API url for contracts and add your url to hardhat.config.js file using [Alchemy.io](https://www.alchemy.com/)
+   ```js
+   // hardhat.config.js file in smart_contracts
+    ropsten: {
+      url: {/* Your own url of contracts */},
+    },
+   ```
+4. Add your metamask account's private key in .env file of smart_contract dir 
+   ```sh
+   PRIVATE_KEY= Metamask account private key 
+   ```
+5. Compile the smart_contracts using 
+   ```sh
+   npx hardhat run scripts/deploy.js --network ropsten
+   ```
+   This will compile contracts and provide the addresses of contracts.
+   Add addresses in the constant.js file in client folder. 
+
+6. Run the application by running following command in client folder
    ```sh
    npm run dev
-   ```
-   This will run the application at `http://localhost:3000/`
-   
-4. Get a free API Key at [https://example.com](https://example.com)
-   ```js
-   const API_KEY = 'ENTER YOUR API';
    ```
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments

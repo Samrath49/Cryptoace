@@ -18,8 +18,8 @@ import {
   transactionContractABI,
   tokenSaleContractAddress,
   tokenSaleContractABI,
-  aiboostTokenContractAddress,
-  aiboostTokenContractABI,
+  aceTokenContractAddress,
+  aceTokenContractABI,
   lotteryPoolContractABI,
   lotteryPoolContractAddress,
   lotteryContractABI,
@@ -106,8 +106,8 @@ export const ContractsProvider = ({ children }) => {
     );
 
     const aiboostTokenContract = new ethers.Contract(
-      aiboostTokenContractAddress,
-      aiboostTokenContractABI,
+      aceTokenContractAddress,
+      aceTokenContractABI,
       signer
     );
 

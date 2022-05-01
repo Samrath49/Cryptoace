@@ -53,7 +53,7 @@ const TransactionsCard = ({
                         </p>
                       </div>
                       <div>
-                        <p className="text-slate-300">{meridiem}</p>
+                        <p className="text-slate-300 mr-4">{meridiem}</p>
                       </div>
                     </div>
                   </div>

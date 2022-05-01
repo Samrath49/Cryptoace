@@ -1,6 +1,6 @@
 require("@nomiclabs/hardhat-waffle");
 
-require('dotenv').config();
+require("dotenv").config();
 
 module.exports = {
   solidity: "0.8.0",
@@ -12,16 +12,14 @@ module.exports = {
   },
   networks: {
     ropsten: {
-      url: "https://eth-ropsten.alchemyapi.io/v2/z4WpA8UKgqnwbTYmrZu15yCOiijBKaRv",
-      accounts: [
-        process.env.PRIVATE_KEY,
-      ],
-    }
+      url: "https://eth-ropsten.alchemyapi.io/v2/Jf5-PQUvqzsci3xk-WwXwHPk-z85g2yV",
+      accounts: [process.env.PRIVATE_KEY],
+    },
   },
   paths: {
     sources: "./contracts",
     tests: "./test",
     cache: "./cache",
-    artifacts: "../client/src/artifacts"
+    artifacts: "../client/src/artifacts",
   },
 };

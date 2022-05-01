@@ -5,32 +5,28 @@ pragma solidity ^0.8.0;
 contract Lottery {
     address public manager;
     address[] public players;
-    uint public entryFee = 0.1 ether;
+    uint256 public entryFee = 0.1 ether;
 
     address winner;
 
-    uint public _end;
+    uint256 public _end;
 
-    uint public time = block.timestamp;
+    uint256 public time = block.timestamp;
 
     // enums
     enum LotteryStatus {
-        START, STARTED, ENDED
+        START,
+        STARTED,
+        ENDED
     }
 
     // events
-    event WinnerDeclared(address winner, uint winningPrice);
+    event WinnerDeclared(address winner, uint256 winningPrice);
 
     LotteryStatus public status = LotteryStatus.START;
 
-    // modifiers
-    modifier isManager {
-        require(msg.sender == manager, "you are not the manager");
-        _;
-    }
-
-    constructor() {
-        manager = msg.sender;
+    constructor(address _manager) {
+        manager = _manager;
     }
 
     // get all players
@@ -39,8 +35,11 @@ contract Lottery {
     }
 
     // start the lottery
-    function start(uint _timeInMinutes) public isManager {
-        require(status == LotteryStatus.START, "lottery has already been started or ended.");
+    function start(uint256 _timeInMinutes) public {
+        require(
+            status == LotteryStatus.START,
+            "lottery has already been started or ended."
+        );
 
         status = LotteryStatus.STARTED;
 
@@ -50,17 +49,20 @@ contract Lottery {
 
     // enter the lottery
     function enter() public payable {
-        require(_end >= uint(block.timestamp), "time is up.");
+        require(_end >= uint256(block.timestamp), "time is up.");
         require(!isParticipate(msg.sender), "you are already a participant");
         require(msg.value >= entryFee, "entry fee is less then 0.1 ether");
-        require(status == LotteryStatus.STARTED, "lottery has not started or its ended.");
+        require(
+            status == LotteryStatus.STARTED,
+            "lottery has not started or its ended."
+        );
 
         players.push(msg.sender);
     }
 
-    function isParticipate(address _participant) private view returns(bool) {
-        for(uint i=0; i<players.length; i++) {
-            if(players[i] == _participant) {
+    function isParticipate(address _participant) private view returns (bool) {
+        for (uint256 i = 0; i < players.length; i++) {
+            if (players[i] == _participant) {
                 return true;
             }
         }
@@ -68,18 +70,26 @@ contract Lottery {
     }
 
     // get random
-    function random() private view returns (uint) {
-        return uint(keccak256(abi.encodePacked(block.difficulty, block.timestamp, players)));
+    function random() private view returns (uint256) {
+        return
+            uint256(
+                keccak256(
+                    abi.encodePacked(block.difficulty, block.timestamp, players)
+                )
+            );
     }
 
-    function end() public  {
-        require(block.timestamp >= _end, "you can not end lottery before time.");
+    function end() public {
+        require(
+            block.timestamp >= _end,
+            "you can not end lottery before time."
+        );
         status = LotteryStatus.ENDED;
 
         require(players.length > 0, "0 participants");
-        uint winnerIndex = random() % players.length;
+        uint256 winnerIndex = random() % players.length;
         winner = players[winnerIndex];
-        uint priceMoney = winningPrice();
+        uint256 priceMoney = winningPrice();
 
         // transfer everything to winner;
         payable(winner).transfer(address(this).balance);
@@ -87,21 +97,22 @@ contract Lottery {
         // reset players.
         players = new address[](0);
 
-
         // winner declared event;
         emit WinnerDeclared(winner, priceMoney);
     }
 
-    function getRemainingTime() public returns(uint) {
-        if(_end <= uint(block.timestamp)){
+    function getRemainingTime() public returns (uint256) {
+        if (_end <= uint256(block.timestamp)) {
             end();
             return 0;
-        } else{
+        } else {
+            // require(_end >= block.timestamp, "time is already up");
+            require(
+                !(status == LotteryStatus.ENDED),
+                "lottery is not started or its ended."
+            );
 
-        // require(_end >= block.timestamp, "time is already up");
-        require(!(status == LotteryStatus.ENDED), "lottery is not started or its ended.");
-        
-        return _end - block.timestamp;
+            return _end - block.timestamp;
         }
     }
 
@@ -110,7 +121,7 @@ contract Lottery {
     }
 
     // get winning price
-    function winningPrice() public view returns(uint) {
+    function winningPrice() public view returns (uint256) {
         return address(this).balance;
     }
 }

@@ -8,8 +8,7 @@ const main = async () => {
   await transactionsContract.deployed();
   console.log("Transactions address: ", transactionsContract.address);
 
-  // Token Sale {Price: 0.001 Ether}
-  const tokenPrice = 1000000000000000;
+  const tokenPrice = 1000000000000;
 
   const aceTokenFactory = await hre.ethers.getContractFactory("AceToken");
   const aceTokenContract = await aceTokenFactory.deploy(1000000);
