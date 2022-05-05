@@ -4,22 +4,20 @@ import { abi as aceTokenABI } from "../artifacts/contracts/AceToken.sol/AceToken
 import { abi as lotteryPoolABI } from "../artifacts/contracts/LotteryPool.sol/LotteryPool.json";
 import { abi as lotteryABI } from "../artifacts/contracts/Lottery.sol/Lottery.json";
 
-// ADD YOUR OWN CONTRACT ADDRESSES
+// ADD YOUR OWN CONTRACT ADDRESSES IN ".env" FILE
 
-export const transactionContractAddress =
-  "";
+export const transactionContractAddress = import.meta.env
+  .VITE_TRANSACTION_CONTRACT;
 export const transactionContractABI = transactionABI;
 
-export const aceTokenContractAddress =
-  "";
+export const aceTokenContractAddress = import.meta.env.VITE_ACE_TOKEN_CONTRACT;
 export const aceTokenContractABI = aceTokenABI;
 
-export const tokenSaleContractAddress =
-  "";
+export const tokenSaleContractAddress = import.meta.env
+  .VITE_TOKEN_SALE_CONTRACT;
 export const tokenSaleContractABI = tokenSaleABI;
 
-export const lotteryPoolContractAddress =
-  "";
+export const lotteryPoolContractAddress = import.meta.env.VITE_LOTTERY_CONTRACT;
 export const lotteryPoolContractABI = lotteryPoolABI;
 
 export const lotteryContractABI = lotteryABI;
