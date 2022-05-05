@@ -40,33 +40,40 @@ Follow these steps to setup this project locally.
 
 _Below are the instructions to setup this project and get started with._
 
-1. Clone the `repo`
+1. Clone the repo
    ```sh
    git clone https://github.com/Samrath49/Cryptoace.git
    ```
-2. Install `NPM` packages for both folders using command
+2. Install NPM packages for `client` and `smart_contracts` folder
    ```sh
    npm install
    ```
-3. Generate an API url for contracts and add your url to hardhat.config.js file using [Alchemy.io](https://www.alchemy.com/)
+3. Generate an API url for contracts and add your url to `hardhat.config.js` file using [Alchemy.io](https://www.alchemy.com/)
    ```js
    // hardhat.config.js file in smart_contracts
     ropsten: {
       url: {/* Your own url of contracts */},
     },
    ```
-4. Add your metamask account's private key in .env file of smart_contract dir 
+4. Add your metamask account's private key in `.env` file of smart_contract dir 
    ```sh
-   PRIVATE_KEY= Metamask account private key 
+   PRIVATE_KEY=Metamask account private key 
    ```
 5. Compile the smart_contracts using 
    ```sh
    npx hardhat run scripts/deploy.js --network ropsten
    ```
-   This will compile contracts and provide the addresses of contracts.
-   Add addresses in the constant.js file in client folder. 
+   This will compile contracts and provide the addresses of deployed contracts.
+6. Create `.env` file and enter the contract addresses generated after step 5. 
+   ```java
+   // add your addresses to .env
+   VITE_TRANSACTION_CONTRACT=
+   VITE_ACE_TOKEN_CONTRACT=
+   VITE_TOKEN_SALE_CONTRACT=
+   VITE_LOTTERY_CONTRACT=
+   ``` 
 
-6. Run the application by running following command in client folder
+7. Run the application by running following command in client folder
    ```sh
    npm run dev
    ```
