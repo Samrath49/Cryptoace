@@ -64,7 +64,7 @@ _Below are the instructions to setup this project and get started with._
    npx hardhat run scripts/deploy.js --network ropsten
    ```
    This will compile contracts and provide the addresses of deployed contracts.
-6. Create `.env` file and enter the contract addresses generated after step 5. 
+6. Create `.env` file in `client` folder and enter the contract addresses as shown below. 
    ```sh
    // add your addresses to .env
    VITE_TRANSACTION_CONTRACT=
