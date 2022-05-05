@@ -88,4 +88,3 @@ A few open-source resources that helped in the development of this project.
 * [3dIcons](https://3dicons.co/)
 
 :star: Like the project? Star this repo — It motivates a lot!
-
