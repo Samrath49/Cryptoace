@@ -65,7 +65,7 @@ _Below are the instructions to setup this project and get started with._
    ```
    This will compile contracts and provide the addresses of deployed contracts.
 6. Create `.env` file and enter the contract addresses generated after step 5. 
-   ```java
+   ```sh
    // add your addresses to .env
    VITE_TRANSACTION_CONTRACT=
    VITE_ACE_TOKEN_CONTRACT=
