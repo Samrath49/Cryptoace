@@ -8,21 +8,21 @@ function Services() {
       img: "bg-buytoken",
       link: "/buy-token",
       description:
-        "A safe secure crypto token offered from Cryptoace for your own use. Buy a token using ropsten etherium.",
+        "A safe secure crypto token offered from Cryptoace for your own use. Buy a token using ropsten ethereum.",
     },
     {
       title: "Play Lottery Game",
       img: "bg-lottery",
       link: "/lottery",
       description:
-        "Play a game of crypto lottery to get a chance of winning etherium. Create your own lottery and play with friends.",
+        "Play a game of crypto lottery to get a chance of winning ethereum. Create your own lottery and play with friends.",
     },
     {
       title: "Send Ether",
       img: "bg-sendEther",
       link: "/send-ether",
       description:
-        "Make etherium transactions across the world. A safe, secure and easy way to help you send etherium to anyone.",
+        "Make ethereum transactions across the world. A safe, secure and easy way to help you send ethereum to anyone.",
     },
   ];
 

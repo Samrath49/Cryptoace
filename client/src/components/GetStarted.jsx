@@ -137,7 +137,7 @@ function GetStarted() {
             href="https://ropsten.oregonctf.org/eth"
             rel="no-follow"
           >
-            Get ropsten etherium{" "}
+            Get ropsten ethereum{" "}
           </a>
         </button>
       </div>
