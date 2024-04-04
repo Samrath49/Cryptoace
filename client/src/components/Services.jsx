@@ -38,7 +38,7 @@ function Services() {
             {cardData.map((card, index) => (
               <Fragment key={index}>
                 <div
-                  className={`group ${card.img} z-10 bg-slateBg bg-opacity-50 rounded-xl shadow-xl px-4 sm:px-8 py-6 sm:py-12 space-y-6 text-center bg-blend-color`}
+                  className={`group ${card.img} z-10 bg-slateBg bg-opacity-70 rounded-xl shadow-xl px-4 sm:px-8 py-6 sm:py-12 space-y-6 text-center bg-blend-luminosity`}
                 >
                   <h3 className="text-2xl font-semibold text-textBg">
                     {card.title}
